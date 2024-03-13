@@ -10,11 +10,20 @@ def main():
     access_token = os.getenv('ACCESS_TOKEN')
     access_token_secret = os.getenv('ACCESS_TOKEN_SECRET')
 
-    bot = TwitterBot(api_key, api_secret_key, access_token, access_token_secret)
+    openai_api_key = os.getenv('OPENAI_API_KEY')
+
+    bot = TwitterBot(api_key, api_secret_key, access_token, access_token_secret, openai_api_key)
+
+    # Generate tweet content
+    prompt = "Tell me a fun fact about space."
+    tweet_content = bot.generate_content(prompt)
     
-    content = "Hello world, this is a test tweet from TweetGenAI!"
-    bot.post_tweet(content)
-    print("Tweet posted successfully.")
+    # Post the generated content
+    if tweet_content:
+        bot.post_tweet(tweet_content)
+        print("Tweet posted successfully.")
+    else:
+        print("Failed to generate content.")
 
 if __name__ == "__main__":
     main()

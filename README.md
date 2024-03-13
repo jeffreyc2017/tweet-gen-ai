@@ -36,7 +36,7 @@ cd tweet-gen-ai
 3. Install the required packages:
 
 ```bash
-pip install tweepy python-dotenv
+pip install tweepy python-dotenv openai
 ```
 
 4. Create a `.env` file in the root directory with your Twitter API credentials and other configuration settings:
