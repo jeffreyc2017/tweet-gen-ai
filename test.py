@@ -1,20 +1,20 @@
-from dotenv import load_dotenv
-import os
+import unittest
+from unittest.mock import patch
 from twitter_bot import TwitterBot
 
-def main():
-    load_dotenv()
-    
-    api_key = os.getenv('API_KEY')
-    api_secret_key = os.getenv('API_SECRET_KEY')
-    access_token = os.getenv('ACCESS_TOKEN')
-    access_token_secret = os.getenv('ACCESS_TOKEN_SECRET')
+class TestTwitterBot(unittest.TestCase):
+    @patch('tweepy.Client.create_tweet')
+    def test_post_tweet(self, mock_create_tweet):
+        # Initialize the bot with test credentials
+        bot = TwitterBot("API key", "API secret key", "Access token", "Access token secret")
+        
+        # Attempt to post a tweet (the API call is mocked)
+        tweet_content = "This is a test tweet from TweetGenAI's unittest."
+        bot.post_tweet(tweet_content)
+        
+        # Assert that the create_tweet method was called once with the correct content
+        mock_create_tweet.assert_called_once_with(text=tweet_content)
+        print("Test passed. create_tweet method was called successfully.")
 
-    bot = TwitterBot(api_key, api_secret_key, access_token, access_token_secret)
-    
-    content = "Hello world, this is a test tweet from TweetGenAI!"
-    bot.post_tweet(content)
-    print("Tweet posted successfully.")
-
-if __name__ == "__main__":
-    main()
+if __name__ == '__main__':
+    unittest.main()
