@@ -15,7 +15,7 @@ def main():
     bot = TwitterBot(api_key, api_secret_key, access_token, access_token_secret, openai_api_key)
 
     # Generate tweet content
-    prompt = "Tell me a fun fact."
+    prompt = "Imagine you're a wise sage with knowledge spanning the universe. Share a profound or quirky fact about anything."
     tweet_content = bot.generate_content(prompt)
     
     # Post the generated content

@@ -23,14 +23,13 @@ class TwitterBot:
             # Adding an instruction for the model to keep the output within 280 characters
             modified_prompt = f"{prompt} Write a tweet that is no more than 280 characters. Your response should only contains the tweet content and no other words."
 
-            # example with a system message
             response = self.openai_client.chat.completions.create(
                 model="gpt-3.5-turbo-0125",
                 messages=[
                     {"role": "system", "content": "You are a helpful assistant."},
                     {"role": "user", "content": modified_prompt},
                 ],
-                temperature=0,
+                temperature=0.7,  # Adjusting temperature for more varied outputs
             )
 
             content = response.choices[0].message.content
