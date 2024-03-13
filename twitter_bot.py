@@ -21,7 +21,7 @@ class TwitterBot:
     def generate_content(self, prompt):
         try:
             # Adding an instruction for the model to keep the output within 280 characters
-            modified_prompt = f"{prompt} Write a tweet that is no more than 280 characters."
+            modified_prompt = f"{prompt} Write a tweet that is no more than 280 characters. Your response should only contains the tweet content and no other words."
 
             # example with a system message
             response = self.openai_client.chat.completions.create(
