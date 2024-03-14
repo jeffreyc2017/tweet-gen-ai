@@ -9,10 +9,11 @@ def main():
     api_secret_key = os.getenv('API_SECRET_KEY')
     access_token = os.getenv('ACCESS_TOKEN')
     access_token_secret = os.getenv('ACCESS_TOKEN_SECRET')
+    bearer_token = os.getenv('BEARER_TOKEN')
 
     openai_api_key = os.getenv('OPENAI_API_KEY')
 
-    bot = TwitterBot(api_key, api_secret_key, access_token, access_token_secret, openai_api_key)
+    bot = TwitterBot(api_key, api_secret_key, access_token, access_token_secret, openai_api_key, bearer_token)
 
     # Generate tweet content
     prompt = "Imagine you're a wise sage with knowledge spanning the universe. Share a profound or quirky fact about anything."
@@ -24,6 +25,10 @@ def main():
         print("Tweet posted successfully.")
     else:
         print("Failed to generate content.")
+
+    # This function is not available for now.
+    # Read a random tweet about "OpenAI" and generate a reply
+    # bot.read_and_reply("#OpenAI")
 
 if __name__ == "__main__":
     main()
