@@ -17,7 +17,7 @@ class TwitterBot:
     def post_tweet(self, content):
         response = self.client.create_tweet(text=content)
         print(f"https://twitter.com/user/status/{response.data['id']}")
-        print(f"{response}")
+        print(f"Response: {response}")
 
     def generate_content(self, prompt):
         try:
@@ -32,6 +32,8 @@ class TwitterBot:
                 ],
                 temperature=0.7,  # Adjusting temperature for more varied outputs
             )
+
+            print(response)
 
             content = response.choices[0].message.content
             print(content)

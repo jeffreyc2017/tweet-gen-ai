@@ -46,6 +46,9 @@ API_KEY=your_api_key_here
 API_SECRET_KEY=your_api_secret_key_here
 ACCESS_TOKEN=your_access_token_here
 ACCESS_TOKEN_SECRET=your_access_token_secret_here
+BEARER_TOKEN=your_bearer_token
+
+OPENAI_API_KEY=your_openai_api_key
 ```
 
 ### Usage
@@ -63,7 +66,7 @@ python main.py
 To run the tests, execute the following command in the project directory:
 
 ```bash
-python unit_test.py
+python test.py
 ```
 
 ## Deployment
